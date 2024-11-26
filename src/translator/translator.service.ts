@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { translate } from '@vitalets/google-translate-api';
+import translate from 'google-translate-free';
 
 @Injectable()
 export class TranslatorService {
@@ -7,9 +7,12 @@ export class TranslatorService {
     text: string,
     fromLang: string = 'vi',
     toLang: string = 'en',
-  ): Promise<string> {
+  ) {
     try {
-      const result = await translate(text, { from: fromLang, to: toLang });
+      const result = await translate(text, {
+        from: fromLang,
+        to: toLang,
+      });
       return result.text;
     } catch (error) {
       throw new Error(error.message);

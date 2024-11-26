@@ -5,7 +5,8 @@ import * as googleTTS from 'google-tts-api';
 export class TextToSpeechService {
   async transfer(text: string, language: string = 'en') {
     try {
-      return googleTTS.getAudioUrl(text, {
+      console.log('ahhah');
+      return googleTTS.getAudioBase64(text, {
         lang: language,
         slow: false,
         host: 'https://translate.google.com',
